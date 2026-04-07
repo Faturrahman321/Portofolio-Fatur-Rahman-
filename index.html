@@ -42,22 +42,17 @@
             padding: 100px 20px;
             text-align: center;
         }
-        /* --- BAGIAN INI SUDAH DIUBAH MENJADI LEBIH BESAR (900px) --- */
         .hero img { max-width: 900px; width: 100%; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); }
 
-        /* --- 2. TENTANG SAYA --- */
-        .about { background-color: var(--dark-bg); color: var(--text-light); }
+        /* --- 2. TENTANG SAYA (DIUBAH) --- */
+        .about { background-color: #000000; color: var(--text-light); }
         .about .container { display: flex; align-items: center; justify-content: center; gap: 60px; flex-wrap: wrap; }
         
         .about-image {
-            position: relative; width: 300px; height: 300px; display: flex; justify-content: center; align-items: center;
-        }
-        /* Lingkaran merah bertekstur di belakang foto */
-        .about-circle {
-            position: absolute; width: 280px; height: 280px; background-color: #d11a1a; border-radius: 50%; z-index: 1;
+            width: 320px; display: flex; justify-content: center; align-items: center;
         }
         .about-photo {
-            position: relative; z-index: 2; width: 250px; height: 300px; object-fit: cover; border-radius: 10px;
+            width: 100%; height: auto; object-fit: contain;
         }
 
         .about-text { flex: 1; min-width: 300px; }
@@ -151,8 +146,7 @@
     <section class="about">
         <div class="container">
             <div class="about-image">
-                <div class="about-circle"></div>
-                <img src="https://via.placeholder.com/250x300/333/fff?text=Foto+Fatur" alt="Fatur Rahman" class="about-photo">
+                <img src="Foto.jpg" alt="Fatur Rahman" class="about-photo">
             </div>
             <div class="about-text">
                 <h2 class="serif-text">Tentang <span style="font-style: italic; font-weight: normal;">Saya</span></h2>
