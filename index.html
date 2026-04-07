@@ -44,18 +44,32 @@
         }
         .hero img { max-width: 900px; width: 100%; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); }
 
-        /* --- 2. TENTANG SAYA (DIUBAH) --- */
+        /* --- 2. TENTANG SAYA (DIUBAH AGAR FOTO MENEMPEL BAWAH) --- */
         .about { background-color: #000000; color: var(--text-light); }
-        .about .container { display: flex; align-items: center; justify-content: center; gap: 60px; flex-wrap: wrap; }
+        .about .container { 
+            display: flex; 
+            align-items: flex-end; /* Membuat elemen di dalamnya rata bawah */
+            justify-content: center; 
+            gap: 60px; 
+            flex-wrap: wrap; 
+            padding-bottom: 0; /* Menghapus padding bawah agar menempel rapat */
+            padding-top: 60px;
+        }
         
         .about-image {
-            width: 320px; display: flex; justify-content: center; align-items: center;
+            width: 320px; display: flex; justify-content: center; align-items: flex-end;
         }
         .about-photo {
             width: 100%; height: auto; object-fit: contain;
+            display: block; /* Menghilangkan jeda putih rahasia bawaan tag img */
         }
 
-        .about-text { flex: 1; min-width: 300px; }
+        .about-text { 
+            flex: 1; 
+            min-width: 300px; 
+            align-self: center; /* Teks tetap berada di tengah secara vertikal */
+            padding-bottom: 40px; /* Jarak aman bawah khusus untuk teks */
+        }
         .about-text h2 { font-size: 2.8rem; margin-bottom: 20px; }
         .about-text p { font-size: 1rem; line-height: 1.8; margin-bottom: 30px; opacity: 0.9; }
         .contact-info { display: flex; gap: 30px; }
@@ -126,7 +140,13 @@
         @media (max-width: 768px) {
             .ig-grid { grid-template-columns: repeat(2, 1fr); }
             .logo-description { flex-direction: column; gap: 20px; }
-            .about-image { width: 100%; height: auto; margin-bottom: 20px; }
+            
+            /* Trik agar foto tetap di bawah teks saat di HP */
+            .about .container { flex-direction: column; }
+            .about-text { order: 1; padding-bottom: 0; text-align: center; }
+            .about-image { width: 100%; max-width: 320px; height: auto; order: 2; margin-top: 30px; }
+            .contact-info { justify-content: center; }
+            
             .sosmed-phone img { transform: rotate(0deg); }
         }
         @media (max-width: 480px) {
