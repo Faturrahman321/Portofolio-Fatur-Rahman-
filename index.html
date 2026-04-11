@@ -108,10 +108,16 @@
         .infografis-gallery { flex: 1.5; display: flex; gap: 15px; min-width: 300px; }
         .infografis-gallery img { flex: 1; width: 100%; object-fit: cover; border-radius: 5px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
 
-        /* --- 7. DESAIN KONTEN INSTAGRAM --- */
+        /* --- 7. DESAIN KONTEN INSTAGRAM (DIUBAH KE 4:5) --- */
         .instagram-section h2 { font-size: 3rem; margin-bottom: 30px; text-align: left; }
         .ig-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-        .ig-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+        .ig-grid img { 
+            width: 100%; 
+            aspect-ratio: 4/5; /* PERUBAHAN DI SINI */
+            object-fit: cover; /* PERUBAHAN DI SINI */
+            border-radius: 8px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15); 
+        }
 
         /* --- 8. MENGELOLA SOSIAL MEDIA --- */
         .sosmed-section { background-color: var(--primary-red); color: white; }
@@ -135,7 +141,7 @@
         .video-gallery .full-width { grid-column: span 2; }
 
         /* --- 10. FOOTER --- */
-        footer { background-color: #1a0505; color: white; text-align: center; padding: 60px 20px; font-size: 2.5rem; }
+        <footer> { background-color: #1a0505; color: white; text-align: center; padding: 60px 20px; font-size: 2.5rem; }
 
         /* --- RESPONSIVE MEDIA QUERIES --- */
         @media (max-width: 768px) {
