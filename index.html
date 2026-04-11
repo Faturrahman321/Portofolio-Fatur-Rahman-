@@ -13,7 +13,7 @@
         /* --- RESET & VARIABEL --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --primary-red: #9B111E;
+            --primary-red: #9B111E; /* Merah gelap/marun */
             --dark-bg: #1a1a1a;
             --light-bg: #ffffff;
             --text-dark: #333333;
@@ -22,14 +22,13 @@
             --font-sans: 'Inter', sans-serif;
         }
 
-        body { font-family: var(--font-sans); color: var(--text-dark); background-color: var(--light-bg); overflow-x: hidden; line-height: 1.6; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+        body { font-family: var(--font-sans); color: var(--text-dark); background-color: var(--light-bg); overflow-x: hidden; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
         
         h1, h2, h3, .serif-text { font-family: var(--font-serif); }
         .red-text { color: var(--primary-red); }
-        img { max-width: 100%; height: auto; display: block; }
 
-        /* --- HALFPATTERN BACKGROUND --- */
+        /* --- HALFPATTERN BACKGROUND (Simulasi titik-titik) --- */
         .halftone-bg {
             background-color: var(--primary-red);
             background-image: radial-gradient(rgba(0,0,0,0.15) 20%, transparent 20%);
@@ -38,111 +37,128 @@
 
         /* --- 1. HERO SECTION --- */
         .hero {
+            background-color: #2a0808; /* Fallback */
             background: linear-gradient(180deg, #1a0505 0%, #3d0c0c 100%);
             padding: 100px 20px;
             text-align: center;
         }
-        .hero .container { padding: 0; }
-        .hero img { max-width: 900px; margin: 0 auto; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); }
+        .hero img { max-width: 900px; width: 100%; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); }
 
-        /* --- 2. TENTANG SAYA --- */
-        .about { background-color: #000000; color: var(--text-light); overflow: hidden; }
+        /* --- 2. TENTANG SAYA (DIUBAH AGAR FOTO MENEMPEL BAWAH) --- */
+        .about { background-color: #000000; color: var(--text-light); }
         .about .container { 
             display: flex; 
-            align-items: center; 
+            align-items: flex-end; /* Membuat elemen di dalamnya rata bawah */
             justify-content: center; 
             gap: 60px; 
-            flex-wrap: wrap;
-            padding-bottom: 0;
+            flex-wrap: wrap; 
+            padding-bottom: 0; /* Menghapus padding bawah agar menempel rapat */
+            padding-top: 60px;
         }
-        .about-image { width: 320px; align-self: flex-end; }
-        .about-photo { width: 100%; object-fit: contain; transform: translateY(10px); }
-        .about-text { flex: 1; min-width: 300px; padding-bottom: 60px; }
-        .about-text h2 { font-size: 3rem; margin-bottom: 20px; }
-        .contact-info { display: flex; gap: 30px; flex-wrap: wrap; margin-top: 20px; }
+        
+        .about-image {
+            width: 320px; display: flex; justify-content: center; align-items: flex-end;
+        }
+        .about-photo {
+            width: 100%; height: auto; object-fit: contain;
+            display: block; /* Menghilangkan jeda putih rahasia bawaan tag img */
+            transform: translateY(20px); /* KODE INI MENDORONG FOTO KE BAWAH */
+        }
+
+        .about-text { 
+            flex: 1; 
+            min-width: 300px; 
+            align-self: center; /* Teks tetap berada di tengah secara vertikal */
+            padding-bottom: 40px; /* Jarak aman bawah khusus untuk teks */
+        }
+        .about-text h2 { font-size: 2.8rem; margin-bottom: 20px; }
+        .about-text p { font-size: 1rem; line-height: 1.8; margin-bottom: 30px; opacity: 0.9; }
+        .contact-info { display: flex; gap: 30px; }
         .contact-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
 
-        /* --- 3. PROJECT SECTIONS COMMON --- */
-        .projects-header { text-align: center; padding: 100px 20px; color: white; }
-        .projects-header h2 { font-size: 4rem; font-style: italic; font-weight: normal; }
+        /* --- 3. SAMPLE PROJECTS TITLE --- */
+        .projects-header { text-align: center; padding: 80px 20px; color: white; }
+        .projects-header h2 { font-size: 4rem; font-weight: normal; font-style: italic; }
 
         /* --- 4. PROJECT LOGO --- */
+        .logo-section .container { padding-top: 0; }
         .logo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 40px; }
-        .logo-card { background: white; border: 1px solid #eee; padding: 40px; display: flex; align-items: center; justify-content: center; height: 180px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .logo-card img { max-height: 100px; object-fit: contain; }
-        .logo-description { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; padding-top: 40px; border-top: 1px solid #eee; }
-        .logo-description h3 { font-size: 2.5rem; flex: 1; }
-        .logo-description div { flex: 1; min-width: 250px; font-size: 0.9rem; color: #666; }
+        .logo-card { background: white; border: 1px solid #ddd; padding: 40px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .logo-card img { max-width: 100%; max-height: 100px; }
+        
+        .logo-description { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; text-align: center; border-top: 1px solid #eee; padding-top: 40px; }
+        .logo-description div { flex: 1; min-width: 250px; font-size: 0.85rem; color: #666; }
+        .logo-description h3 { font-size: 2.5rem; color: var(--primary-red); }
 
         /* --- 5. DESAIN PRODUK --- */
         .product-section { background-color: #f9f9f9; border-top: 5px solid var(--primary-red); border-bottom: 5px solid var(--primary-red); }
-        .product-container { display: flex; gap: 50px; flex-wrap: wrap; }
+        .product-container { display: flex; gap: 50px; flex-wrap: wrap; align-items: flex-start; }
         .product-gallery { flex: 1.5; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; min-width: 300px; }
-        .product-gallery img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 5px; }
+        .product-gallery img { width: 100%; height: 100%; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        
         .product-text { flex: 1; min-width: 300px; }
         .product-text h2 { font-size: 3rem; margin-bottom: 20px; }
+        .product-text p { font-size: 0.95rem; line-height: 1.8; color: #555; }
 
         /* --- 6. DESAIN INFOGRAFIS --- */
         .infografis-section { display: flex; gap: 50px; flex-wrap: wrap; align-items: center; }
-        .infografis-gallery { flex: 1.5; display: flex; gap: 15px; min-width: 300px; }
-        .infografis-gallery img { flex: 1; aspect-ratio: 2/3; object-fit: cover; border-radius: 5px; }
         .infografis-text { flex: 1; min-width: 300px; }
+        .infografis-text h2 { font-size: 3rem; margin-bottom: 20px; }
+        .infografis-text p { font-size: 0.95rem; line-height: 1.8; color: #555; }
+        .infografis-gallery { flex: 1.5; display: flex; gap: 15px; min-width: 300px; }
+        .infografis-gallery img { flex: 1; width: 100%; object-fit: cover; border-radius: 5px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
 
-        /* --- 7. INSTAGRAM GRID (FIXED 4:5) --- */
+        /* --- 7. DESAIN KONTEN INSTAGRAM (DIUBAH KE 4:5) --- */
+        .instagram-section h2 { font-size: 3rem; margin-bottom: 30px; text-align: left; }
         .ig-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-        .ig-grid img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .ig-grid img { 
+            width: 100%; 
+            aspect-ratio: 4/5; /* PERUBAHAN DI SINI */
+            object-fit: cover; /* PERUBAHAN DI SINI */
+            border-radius: 8px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15); 
+        }
 
-        /* --- 8. SOSIAL MEDIA MANAGEMENT --- */
+        /* --- 8. MENGELOLA SOSIAL MEDIA --- */
         .sosmed-section { background-color: var(--primary-red); color: white; }
         .sosmed-container { display: flex; gap: 40px; flex-wrap: wrap; align-items: center; }
         .sosmed-text { flex: 1.5; min-width: 300px; }
         .sosmed-text h2 { font-size: 3rem; margin-bottom: 15px; }
-        .sosmed-post-mockup img { height: 150px; border-radius: 5px; margin-top: 20px; }
-        .sosmed-phone { flex: 1; display: flex; justify-content: center; }
-        .sosmed-phone img { max-width: 250px; transform: rotate(5deg); filter: drop-shadow(15px 15px 30px rgba(0,0,0,0.4)); }
+        .sosmed-text p { opacity: 0.9; margin-bottom: 30px; font-weight: 300; }
+        .sosmed-post-mockup { display: flex; gap: 10px; margin-top: 20px; }
+        .sosmed-post-mockup img { height: 120px; border-radius: 5px; }
+        .sosmed-phone { flex: 1; display: flex; justify-content: center; min-width: 250px; }
+        .sosmed-phone img { max-width: 250px; transform: rotate(5deg); filter: drop-shadow(10px 10px 20px rgba(0,0,0,0.3)); }
 
         /* --- 9. EDITING VIDEO --- */
         .video-section { background-color: #830b0b; color: white; background-image: radial-gradient(rgba(0,0,0,0.1) 15%, transparent 15%); background-size: 15px 15px; }
         .video-container { display: flex; gap: 40px; flex-wrap: wrap; }
-        .video-gallery { flex: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .video-gallery img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px; }
+        .video-text { flex: 1; min-width: 250px; }
+        .video-text h2 { font-size: 2.5rem; margin-bottom: 15px; }
+        .video-text p { font-size: 0.9rem; opacity: 0.9; }
+        .video-gallery { flex: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; min-width: 300px; }
+        .video-gallery img { width: 100%; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); border: 2px solid rgba(255,255,255,0.1); }
         .video-gallery .full-width { grid-column: span 2; }
 
         /* --- 10. FOOTER --- */
-        footer { background-color: #1a0505; color: white; text-align: center; padding: 80px 20px; font-size: 2.5rem; }
+        <footer> { background-color: #1a0505; color: white; text-align: center; padding: 60px 20px; font-size: 2.5rem; }
 
-        /* --- MOBILE OPTIMIZATION --- */
+        /* --- RESPONSIVE MEDIA QUERIES --- */
         @media (max-width: 768px) {
-            .container { padding: 40px 20px; }
-            h2, .about-text h2, .product-text h2, .sosmed-text h2 { font-size: 2.2rem; text-align: center; }
-            .projects-header h2 { font-size: 2.5rem; }
-
-            /* About */
-            .about .container { flex-direction: column; text-align: center; }
-            .about-image { width: 220px; order: 2; margin-top: 0; }
-            .about-text { order: 1; padding-bottom: 20px; }
-            .contact-info { justify-content: center; }
-
-            /* Grid Layouts */
-            .product-container, .infografis-section, .sosmed-container, .video-container { flex-direction: column; text-align: center; }
-            .product-gallery, .infografis-gallery, .video-gallery { order: 2; width: 100%; }
-            .product-text, .infografis-text, .sosmed-text, .video-text { order: 1; }
-            
             .ig-grid { grid-template-columns: repeat(2, 1fr); }
-            .logo-grid { grid-template-columns: repeat(2, 1fr); }
-            .logo-description { flex-direction: column; text-align: center; }
-
-            .sosmed-phone img { transform: rotate(0); max-width: 200px; }
-            .sosmed-post-mockup { display: flex; justify-content: center; }
+            .logo-description { flex-direction: column; gap: 20px; }
             
-            .video-gallery { grid-template-columns: 1fr; }
-            .video-gallery .full-width { grid-column: span 1; }
+            /* Trik agar foto tetap di bawah teks saat di HP */
+            .about .container { flex-direction: column; }
+            .about-text { order: 1; padding-bottom: 0; text-align: center; }
+            .about-image { width: 100%; max-width: 320px; height: auto; order: 2; margin-top: 30px; }
+            .contact-info { justify-content: center; }
+            
+            .sosmed-phone img { transform: rotate(0deg); }
         }
-
         @media (max-width: 480px) {
-            .logo-grid, .ig-grid { grid-template-columns: 1fr; }
-            .projects-header h2 { font-size: 2rem; }
-            footer { font-size: 1.8rem; }
+            .product-gallery, .infografis-gallery, .video-gallery { grid-template-columns: 1fr; flex-direction: column; }
+            .video-gallery .full-width { grid-column: span 1; }
         }
     </style>
 </head>
@@ -150,7 +166,7 @@
 
     <header class="hero">
         <div class="container">
-            <img src="Sampul.png" alt="Creative Portfolio Fatur Rahman">
+            <img src="Sampul.png" alt="Creative Portfolio Fatur Rahman 2026">
         </div>
     </header>
 
@@ -161,10 +177,14 @@
             </div>
             <div class="about-text">
                 <h2 class="serif-text">Tentang <span style="font-style: italic; font-weight: normal;">Saya</span></h2>
-                <p>Halo! Saya adalah Fatur Rahman, seorang tenaga kreatif yang berfokus pada hasil yang komunikatif dan menarik secara visual. Spesialisasi saya meliputi produksi konten, editing video dengan storytelling kuat, serta desain grafis profesional.</p>
+                <p>Halo! Saya adalah Fatur Rahman, seorang tenaga kreatif yang berfokus pada hasil yang komunikatif dan menarik secara visual. Saya memiliki spesialisasi dalam produksi konten, editing video dengan alur penceritaan yang kuat, serta perancangan desain grafis yang bersih dan profesional. Saya percaya desain bukan hanya soal estetika, tapi juga solusi.</p>
                 <div class="contact-info">
-                    <div class="contact-item"><span>📞</span> 0812-XXXX-XXXX</div>
-                    <div class="contact-item"><span>✉️</span> fatur@email.com</div>
+                    <div class="contact-item">
+                        <span>📞</span> 0812-XXXX-XXXX
+                    </div>
+                    <div class="contact-item">
+                        <span>✉️</span> emailmu@gmail.com
+                    </div>
                 </div>
             </div>
         </div>
@@ -183,9 +203,9 @@
                 <div class="logo-card"><img src="Logo4.png" alt="Logo 4"></div>
             </div>
             <div class="logo-description">
-                <h3><span class="red-text">Project</span> <i style="font-weight: normal;">Logo</i></h3>
-                <div>Setiap logo dirancang dengan mempertimbangkan makna, karakter brand, serta keseimbangan estetika visual.</div>
-                <div>Solusi desain yang merepresentasikan pesan dan nilai brand secara efektif kepada audiens.</div>
+                <div>Setiap logo dirancang dengan pendekatan yang mempertimbangkan makna, karakter brand, serta keseimbangan estetika visual agar mampu merepresentasikan pesan dan nilai yang ingin disampaikan..</div>
+                <h3><span class="red-text">Project</span> <span style="font-style: italic; font-weight: normal;">Logo</span></h3>
+                <div>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</div>
             </div>
         </div>
     </section>
@@ -193,50 +213,50 @@
     <section class="product-section">
         <div class="container product-container">
             <div class="product-gallery">
-                <img src="Produk1.png" alt="Produk 1">
-                <img src="Produk02.png" alt="Produk 2">
-                <img src="Produk03.png" alt="Produk 3">
-                <img src="Produk04.png" alt="Produk 4">
+                <img src="Produk1.png" alt="Mockup Tas 1">
+                <img src="Produk02.png" alt="Mockup Tas 2">
+                <img src="Produk03.png" alt="Mockup Kemeja">
+                <img src="Produk04.png" alt="Mockup Lain">
             </div>
             <div class="product-text">
-                <h2 class="red-text serif-text">Desain <i style="font-weight: normal;">Produk</i></h2>
-                <p>Merancang identitas fisik perusahaan mulai dari seragam kerja, totebag, hingga merchandise eksklusif dengan memperhatikan visibilitas brand.</p>
+                <h2 class="red-text serif-text">Desain <span style="font-style: italic; font-weight: normal;">Produk</span></h2>
+                <p>Merancang berbagai kebutuhan visual untuk produk merchandise dan identitas fisik perusahaan. Mulai dari desain seragam kerja, totebag eksklusif, hingga perlengkapan kantor. Setiap desain dibuat dengan memperhatikan keseimbangan antara fungsi, visibilitas brand, dan estetika yang sesuai dengan karakter organisasi.</p>
             </div>
         </div>
     </section>
 
     <section class="container infografis-section">
         <div class="infografis-text">
-            <h2 class="red-text serif-text">Desain <i style="font-weight: normal;">Infografis</i></h2>
-            <p>Mengubah informasi kompleks menjadi visual edukatif yang mudah dipahami. Cocok untuk laporan program dan presentasi progres kegiatan.</p>
+            <h2 class="red-text serif-text">Desain <span style="font-style: italic; font-weight: normal;">Infografis</span></h2>
+            <p>Mengubah data atau informasi yang kompleks menjadi visual yang mudah dipahami, menarik, dan edukatif. Sangat cocok untuk keperluan laporan program, edukasi audiens, maupun presentasi progres kegiatan yang membutuhkan tampilan visual informatif dengan gaya penyampaian yang terstruktur.</p>
         </div>
         <div class="infografis-gallery">
-            <img src="https://via.placeholder.com/300x450/2ecc71/fff?text=Data+1" alt="Infografis 1">
-            <img src="https://via.placeholder.com/300x450/2ecc71/fff?text=Data+2" alt="Infografis 2">
+            <img src="https://via.placeholder.com/300x600/2ecc71/fff?text=Infografis+Data" alt="Infografis Laut">
+            <img src="https://via.placeholder.com/300x600/2ecc71/fff?text=Infografis+Data" alt="Infografis Data">
         </div>
     </section>
 
     <section class="container instagram-section">
-        <h2 class="red-text serif-text" style="margin-bottom: 30px;">Desain <i style="font-weight: normal;">Instagram</i></h2>
+        <h2 class="red-text serif-text">Desain <span style="font-style: italic; font-weight: normal;">Konten Instagram</span></h2>
         <div class="ig-grid">
-            <img src="Post1.png" alt="Post 1">
-            <img src="Post2.png" alt="Post 2">
-            <img src="Post3.png" alt="Post 3">
-            <img src="Post4.png" alt="Post 4">
+            <img src="Post1.png" alt="IG Feed 1">
+            <img src="Post2.png" alt="IG Feed 2">
+            <img src="Post3.png" alt="IG Feed 3">
+            <img src="Post4.png" alt="IG Feed 4">
         </div>
     </section>
 
     <section class="sosmed-section">
         <div class="container sosmed-container">
             <div class="sosmed-text">
-                <h2 class="serif-text">Mengelola <i style="font-weight: normal;">Sosmed</i></h2>
-                <p>Manajemen tata letak feed (grid planning) agar profil terlihat profesional, konsisten, dan memiliki alur cerita visual yang kuat.</p>
+                <h2 class="serif-text">Mengelola <span style="font-style: italic; font-weight: normal;">Sosial Media</span></h2>
+                <p>Tidak hanya membuat desain satuan, saya juga mengelola tata letak feed (grid planning) agar profil media sosial terlihat profesional, konsisten, dan memiliki alur cerita yang menyatu secara visual untuk meningkatkan engagement audiens.</p>
                 <div class="sosmed-post-mockup">
-                    <img src="Carousel01.png" alt="Carousel">
+                    <img src="Carousel01.png" alt="Carousel 1">
                 </div>
             </div>
             <div class="sosmed-phone">
-                <img src="MockupHp.png" alt="Mockup HP">
+                <img src="MockupHp.png" alt="Mockup HP Instagram">
             </div>
         </div>
     </section>
@@ -244,13 +264,13 @@
     <section class="video-section">
         <div class="container video-container">
             <div class="video-text">
-                <h2 class="serif-text">Editing <i style="font-weight: normal;">Video</i></h2>
-                <p>Penyuntingan video profesional: color grading, motion graphics, dan optimasi konten untuk Meta Ads maupun dokumentasi edukasi.</p>
+                <h2 class="serif-text">Editing <span style="font-style: italic; font-weight: normal;">Video</span></h2>
+                <p>Berpengalaman merakit dan menyunting footage menjadi video yang utuh. Mulai dari penyesuaian warna (color grading) dengan nuansa hangat/realistis, penambahan grafis gerak (motion), memotong ritme sesuai musik, hingga optimasi video untuk berbagai kebutuhan (iklan Meta Ads, konten dokumentasi, hingga materi edukasi).</p>
             </div>
             <div class="video-gallery">
-                <img src="Edit1.png" class="full-width" alt="Editing 1">
-                <img src="Edit2.png" alt="Editing 2">
-                <img src="Edit3.png" alt="Editing 3">
+                <img src="Edit1.png" class="full-width" alt="Software Editing">
+                <img src="Edit2.png" alt="Thumbnail 1">
+                <img src="Edit3.png" alt="Thumbnail 2">
             </div>
         </div>
     </section>
